@@ -1,16 +1,16 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.7.0",
+  "name": "pokemon-gold-slot",
+  "version": "0.0.1",
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/thefnox/pokemon-gold-slot.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8.10.0"
   },
-  "author": "Max Stoiber",
+  "author": "FNOX",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "7.0.0",
+    "@inlet/react-pixi": "^0.3.0",
     "chalk": "^2.4.1",
     "compression": "1.7.3",
     "connected-react-router": "4.5.0",
