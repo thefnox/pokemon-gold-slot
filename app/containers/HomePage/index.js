@@ -10,16 +10,16 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { Stage } from '@inlet/react-pixi';
+import Layout from 'components/Layout';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <Stage width={800} height={720} options={{ backgroundColor: 0xc0c048 }}>
+        <Layout />
+      </Stage>
     );
   }
 }

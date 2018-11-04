@@ -9,19 +9,25 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
+import styled from 'styled-components';
 import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
+
+const AppWrapper = styled.div`
+  color: #000;
+  max-width: calc(768px + 16px * 2);
+  margin: 0 auto;
+`;
 
 export default function App() {
   return (
     <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <AppWrapper>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+        </Switch>
+      </AppWrapper>
       <GlobalStyle />
     </div>
   );

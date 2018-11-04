@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, injectGlobal } from 'styled-components';
+import PokemonGB from './fonts/Pokemon-GB.ttf';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -16,15 +17,26 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    background-color: #fafafa;
+    background-color: #000;
     min-height: 100%;
     min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
   p,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
+  }
+
+  @font-face {
+    font-family: 'PokemonGB';
+    src: url('app/fonts/Pokemon-GB.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
   }
 `;
 
