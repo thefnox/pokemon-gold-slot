@@ -1,5 +1,5 @@
-import { createGlobalStyle, injectGlobal } from 'styled-components';
-import PokemonGB from './fonts/Pokemon-GB.ttf';
+import { createGlobalStyle } from 'styled-components';
+import PokemonGB from './fonts/PokemonGB.woff2';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -34,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'PokemonGB';
-    src: url('app/fonts/Pokemon-GB.ttf') format('truetype');
+    src: url('${PokemonGB}') format('woff2')
     font-weight: normal;
     font-style: normal;
   }

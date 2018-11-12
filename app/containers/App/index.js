@@ -10,14 +10,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import HomePage from 'containers/HomePage/Loadable';
+import GamePage from 'containers/GamePage/Loadable';
 
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
   color: #000;
-  max-width: calc(768px + 16px * 2);
+  max-width: 100vmin;
   margin: 0 auto;
+  font-family: 'PokemonGB';
 `;
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
     <div>
       <AppWrapper>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={GamePage} />
         </Switch>
       </AppWrapper>
       <GlobalStyle />
