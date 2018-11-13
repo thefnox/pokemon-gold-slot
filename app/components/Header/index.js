@@ -13,7 +13,7 @@ import RelativeRectangle from 'components/RelativeRectangle';
 /* eslint-disable react/prefer-stateless-function */
 class Header extends React.Component {
   render() {
-    const { width, height, credits, payout } = this.props;
+    const { width, height, credits, payout, xOffset, yOffset } = this.props;
     return (
       <React.Fragment>
         <RelativeRectangle
@@ -24,6 +24,8 @@ class Header extends React.Component {
           wide={80}
           tall={0.5}
           fill={0xc0c8e0}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeRectangle
           width={width}
@@ -33,6 +35,8 @@ class Header extends React.Component {
           wide={80}
           tall={0.5}
           fill={0xc0c8e0}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeRectangle
           width={width}
@@ -42,6 +46,8 @@ class Header extends React.Component {
           wide={80}
           tall={0.5}
           fill={0xc0c8e0}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeRectangle
           width={width}
@@ -51,26 +57,32 @@ class Header extends React.Component {
           wide={80}
           tall={0.5}
           fill={0xc0c8e0}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <ScoreDisplay
           width={width}
           height={height}
-          xPos={21}
+          xPos={20}
           yPos={0.5}
           wide={16}
           tall={6}
           label="CREDITS"
           value={credits}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <ScoreDisplay
           width={width}
           height={height}
-          xPos={43}
+          xPos={43.5}
           yPos={0.5}
           wide={16}
           tall={6}
           label="PAYOUT"
           value={payout}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
       </React.Fragment>
     );

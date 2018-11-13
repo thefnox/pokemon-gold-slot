@@ -12,7 +12,7 @@ import RelativeSprite from 'components/RelativeSprite';
 /* eslint-disable react/prefer-stateless-function */
 class ReelsDecoration extends React.Component {
   render() {
-    const { width, height, bet } = this.props;
+    const { width, height, xOffset, yOffset, bet } = this.props;
 
     return (
       <React.Fragment>
@@ -24,6 +24,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/2.png"
@@ -33,6 +35,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/1.png"
@@ -42,6 +46,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/2.png"
@@ -51,6 +57,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/3.png"
@@ -60,6 +68,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/3.png"
@@ -69,6 +79,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/2.png"
@@ -78,6 +90,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/1.png"
@@ -87,6 +101,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/2.png"
@@ -96,6 +112,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/3.png"
@@ -105,6 +123,8 @@ class ReelsDecoration extends React.Component {
           tall={7}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/deco2.png"
@@ -114,6 +134,8 @@ class ReelsDecoration extends React.Component {
           tall={5}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/deco2.png"
@@ -123,6 +145,8 @@ class ReelsDecoration extends React.Component {
           tall={5}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/deco2.png"
@@ -132,6 +156,8 @@ class ReelsDecoration extends React.Component {
           tall={5}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/gloom.png"
@@ -141,6 +167,8 @@ class ReelsDecoration extends React.Component {
           tall={6.5}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/gloom.png"
@@ -150,6 +178,8 @@ class ReelsDecoration extends React.Component {
           tall={6.5}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image="/gloom.png"
@@ -159,6 +189,8 @@ class ReelsDecoration extends React.Component {
           tall={6.5}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
@@ -168,6 +200,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
@@ -177,6 +211,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 1 ? '/deco1on.png' : '/deco1.png'}
@@ -186,6 +222,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
@@ -195,6 +233,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
@@ -204,6 +244,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
@@ -213,6 +255,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
@@ -222,6 +266,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 1 ? '/deco1on.png' : '/deco1.png'}
@@ -231,6 +277,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
@@ -240,6 +288,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
         <RelativeSprite
           image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
@@ -249,6 +299,8 @@ class ReelsDecoration extends React.Component {
           tall={4}
           width={width}
           height={height}
+          xOffset={xOffset}
+          yOffset={yOffset}
         />
       </React.Fragment>
     );

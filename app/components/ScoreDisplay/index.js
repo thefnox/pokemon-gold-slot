@@ -40,7 +40,7 @@ class ScoreDisplay extends React.Component {
           height={height / 2}
           fill={0xffffff}
         />
-        <Text x={x} height={height / 2} style={labelStyle} text={label} />
+        <Text x={x} y={y} height={height / 2} style={labelStyle} text={label} />
         <Text
           x={x}
           height={height / 2}

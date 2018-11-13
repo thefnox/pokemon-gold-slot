@@ -21,6 +21,8 @@ export default class GamePage extends React.PureComponent {
   }
 
   state = {
+    xOffset: 0,
+    yOffset: 0,
     credits: 100,
     payout: 0,
     bet: 1,
@@ -29,6 +31,37 @@ export default class GamePage extends React.PureComponent {
     reelTwoSpinning: true,
     reelThreeSpinning: true,
     win: false,
+    symbols: [
+      {
+        icon: '/7.png',
+        payout: 300,
+      },
+      {
+        icon: '/pokeball.png',
+        payout: 50,
+      },
+      {
+        icon: '/staryu.png',
+        payout: 15,
+      },
+      {
+        icon: '/squirtle.png',
+        payout: 10,
+      },
+      {
+        icon: '/pikachu.png',
+        payout: 8,
+      },
+      {
+        icon: '/cherry.png',
+        payout: 6,
+      },
+    ],
+    distributions: [
+      [0, 5, 2, 4, 3, 0, 5, 2, 4, 3, 1, 5, 2, 4, 3],
+      [0, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2],
+      [0, 4, 5, 3, 2, 4, 5, 3, 2, 4, 1, 5, 3, 2, 4],
+    ],
   };
 
   calcWidth() {
