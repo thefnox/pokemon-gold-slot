@@ -12,7 +12,7 @@ import RelativeSprite from 'components/RelativeSprite';
 /* eslint-disable react/prefer-stateless-function */
 class ReelsDecoration extends React.Component {
   render() {
-    const { width, height } = this.props;
+    const { width, height, bet } = this.props;
 
     return (
       <React.Fragment>
@@ -157,6 +157,96 @@ class ReelsDecoration extends React.Component {
           yPos={7}
           wide={7.5}
           tall={6.5}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
+          xPos={12}
+          yPos={8.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
+          xPos={12}
+          yPos={16.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 1 ? '/deco1on.png' : '/deco1.png'}
+          xPos={12}
+          yPos={24.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
+          xPos={12}
+          yPos={32.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
+          xPos={12}
+          yPos={40.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
+          xPos={65}
+          yPos={8.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
+          xPos={65}
+          yPos={16.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 1 ? '/deco1on.png' : '/deco1.png'}
+          xPos={65}
+          yPos={24.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 2 ? '/deco1on.png' : '/deco1.png'}
+          xPos={65}
+          yPos={32.5}
+          wide={3}
+          tall={4}
+          width={width}
+          height={height}
+        />
+        <RelativeSprite
+          image={bet >= 3 ? '/deco1on.png' : '/deco1.png'}
+          xPos={65}
+          yPos={40.5}
+          wide={3}
+          tall={4}
           width={width}
           height={height}
         />

@@ -23,6 +23,12 @@ export default class GamePage extends React.PureComponent {
   state = {
     credits: 100,
     payout: 0,
+    bet: 1,
+    playing: false,
+    reelOneSpinning: true,
+    reelTwoSpinning: true,
+    reelThreeSpinning: true,
+    win: false,
   };
 
   calcWidth() {
@@ -56,9 +62,7 @@ export default class GamePage extends React.PureComponent {
             {...this.props}
             width={width}
             height={height}
-            credits={credits}
-            payout={payout}
-            {...this.props}
+            {...this.state}
           />
         </Stage>
       </div>

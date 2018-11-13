@@ -29,6 +29,7 @@ import '!file-loader?name=[name].[ext]!./images/2.png';
 import '!file-loader?name=[name].[ext]!./images/1.png';
 import '!file-loader?name=[name].[ext]!./images/cherry.png';
 import '!file-loader?name=[name].[ext]!./images/deco1.png';
+import '!file-loader?name=[name].[ext]!./images/deco1on.png';
 import '!file-loader?name=[name].[ext]!./images/deco2.png';
 import '!file-loader?name=[name].[ext]!./images/gloom.png';
 import '!file-loader?name=[name].[ext]!./images/pikachu.png';
