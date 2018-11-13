@@ -22,9 +22,21 @@ import App from 'containers/App';
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
-// Load the favicon and the .htaccess file
-/* eslint-disable import/no-unresolved, import/extensions */
+// Load assets
 import '!file-loader?name=[name].[ext]!./images/7.png';
+import '!file-loader?name=[name].[ext]!./images/3.png';
+import '!file-loader?name=[name].[ext]!./images/2.png';
+import '!file-loader?name=[name].[ext]!./images/1.png';
+import '!file-loader?name=[name].[ext]!./images/cherry.png';
+import '!file-loader?name=[name].[ext]!./images/deco1.png';
+import '!file-loader?name=[name].[ext]!./images/deco2.png';
+import '!file-loader?name=[name].[ext]!./images/gloom.png';
+import '!file-loader?name=[name].[ext]!./images/pikachu.png';
+import '!file-loader?name=[name].[ext]!./images/pokeball.png';
+import '!file-loader?name=[name].[ext]!./images/squirtle.png';
+import '!file-loader?name=[name].[ext]!./images/staryu.png';
+import '!file-loader?name=[name].[ext]!./fonts/PokemonGB.woff';
+import '!file-loader?name=[name].[ext]!./fonts/PokemonGB.woff2';
 import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 

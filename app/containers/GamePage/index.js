@@ -20,6 +20,11 @@ export default class GamePage extends React.PureComponent {
     this.wrapperRef = React.createRef();
   }
 
+  state = {
+    credits: 100,
+    payout: 0,
+  };
+
   calcWidth() {
     const node = this.wrapperRef.current;
     if (node) {
@@ -34,9 +39,10 @@ export default class GamePage extends React.PureComponent {
   }
 
   render() {
+    const { credits, payout } = this.state;
     const width = this.calcWidth();
     const height = this.calcHeight();
-
+    PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
     return (
       <div ref={this.wrapperRef}>
         <Stage
@@ -46,7 +52,14 @@ export default class GamePage extends React.PureComponent {
             backgroundColor: 0xc0c048,
           }}
         >
-          <GameLayout width={width} height={height} {...this.props} />
+          <GameLayout
+            {...this.props}
+            width={width}
+            height={height}
+            credits={credits}
+            payout={payout}
+            {...this.props}
+          />
         </Stage>
       </div>
     );

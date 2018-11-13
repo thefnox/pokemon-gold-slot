@@ -2,9 +2,9 @@
 // import { mount } from 'enzyme';
 // import { enzymeFind } from 'styled-components/test-utils';
 
-// import PayoutDisplay from '../index';
+// import ScoreDisplay from '../index';
 
-describe('<PayoutDisplay />', () => {
+describe('<ScoreDisplay />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
