@@ -8,9 +8,8 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import GamePage from 'containers/GamePage/Loadable';
+import MainPage from 'containers/MainPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
 
@@ -25,9 +24,7 @@ export default function App() {
   return (
     <div>
       <AppWrapper>
-        <Switch>
-          <Route exact path="/" component={GamePage} />
-        </Switch>
+        <MainPage />
       </AppWrapper>
       <GlobalStyle />
     </div>

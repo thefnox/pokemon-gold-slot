@@ -22,6 +22,8 @@ const withRelativeCoords = WrappedComponent => {
           y={calcY(yPos + (yOffset || 0), height)}
           width={calcX(wide, width)}
           height={calcY(tall, height)}
+          origWidth={width}
+          origHeight={height}
         />
       );
     }

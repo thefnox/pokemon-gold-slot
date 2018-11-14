@@ -6,15 +6,40 @@
 
 import React from 'react';
 import ReelsDecoration from 'components/ReelsDecoration';
-import RelativeSprite from 'components/RelativeSprite';
+import Reel from 'components/Reel';
 
 /* eslint-disable react/prefer-stateless-function */
 class Reels extends React.Component {
   render() {
+    const {distributions} = this.props
     // Decorations come first
     return (
       <React.Fragment>
         <ReelsDecoration {...this.props} />
+        <Reel
+          {...this.props}
+          wide={16}
+          tall={25}
+          xPos={16}
+          yPos={14.5}
+          distribution={distributions[0]}
+        />
+        <Reel
+          {...this.props}
+          wide={16}
+          tall={25}
+          xPos={32}
+          yPos={14.5}
+          distribution={distributions[1]}
+        />
+        <Reel
+          {...this.props}
+          wide={16}
+          tall={25}
+          xPos={48}
+          yPos={14.5}
+          distribution={distributions[2]}
+        />
       </React.Fragment>
     );
   }

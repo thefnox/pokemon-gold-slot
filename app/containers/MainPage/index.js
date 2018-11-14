@@ -1,20 +1,28 @@
-/*
- * HomePage
+/**
  *
- * This is the first thing users see of our App, at the '/' route
+ * MainPage
  *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a necessity for you then you can refactor it and remove
- * the linting exception.
  */
 
 import React from 'react';
-import { Stage } from '@inlet/react-pixi';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import { Stage, withPixiApp } from '@inlet/react-pixi';
 import GameLayout from 'components/GameLayout';
 
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+import makeSelectMainPage from './selectors';
+import reducer from './reducer';
+import saga from './saga';
+
+const Game = withPixiApp(GameLayout);
+
+
 /* eslint-disable react/prefer-stateless-function */
-export default class GamePage extends React.PureComponent {
+export class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.wrapperRef = React.createRef();
@@ -64,6 +72,7 @@ export default class GamePage extends React.PureComponent {
     ],
   };
 
+
   calcWidth() {
     const node = this.wrapperRef.current;
     if (node) {
@@ -78,7 +87,6 @@ export default class GamePage extends React.PureComponent {
   }
 
   render() {
-    const { credits, payout } = this.state;
     const width = this.calcWidth();
     const height = this.calcHeight();
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
@@ -91,7 +99,7 @@ export default class GamePage extends React.PureComponent {
             backgroundColor: 0xc0c048,
           }}
         >
-          <GameLayout
+          <Game
             {...this.props}
             width={width}
             height={height}
@@ -102,3 +110,31 @@ export default class GamePage extends React.PureComponent {
     );
   }
 }
+
+MainPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  mainPage: makeSelectMainPage(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: 'mainPage', reducer });
+const withSaga = injectSaga({ key: 'mainPage', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(MainPage);
