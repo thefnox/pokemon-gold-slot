@@ -37,18 +37,16 @@ class BottomText extends React.Component {
           tall={25.5}
           text={this.renderText()}
         />
-        {
-          !playing && (
-            <BetSelect
-              {...this.props}
-              xPos={50}
-              yPos={32}
-              wide={30}
-              textWidth={20}
-              tall={40}
-            />
-          )
-        }
+        {!playing && (
+          <BetSelect
+            {...this.props}
+            xPos={50}
+            yPos={32}
+            wide={30}
+            textWidth={20}
+            tall={40}
+          />
+        )}
       </React.Fragment>
     );
   }

@@ -24,7 +24,7 @@ class TextDisplayBackground extends React.Component {
       xPos,
       yPos,
       wide,
-      tall
+      tall,
     } = this.props;
 
     return (
@@ -138,7 +138,7 @@ class TextDisplayBackground extends React.Component {
           yPos={4}
           fill={0x000000}
         />
-        
+
         <RelativeRectangle
           width={origWidth}
           height={origHeight}

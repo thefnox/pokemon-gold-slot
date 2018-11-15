@@ -115,27 +115,17 @@ export class MainPage extends React.Component {
   }
 
   handleTouch = () => {
-    const {
-      beginPlaying,
-      setInput,
-      playing,
-    } = this.props;
+    const { beginPlaying, setInput, playing } = this.props;
 
     if (!playing) {
       beginPlaying();
     } else {
       setInput();
     }
-  }
+  };
 
-  handleInput = (event) => {
-    const {
-      beginPlaying,
-      setInput,
-      playing,
-      bet,
-      updateBet,
-    } = this.props;
+  handleInput = event => {
+    const { beginPlaying, setInput, playing, bet, updateBet } = this.props;
 
     if (!playing) {
       switch (event.key) {
@@ -158,11 +148,11 @@ export class MainPage extends React.Component {
     } else {
       setInput();
     }
-  }
+  };
 
   renderSound = () => {
-    //As weird as it may sound, it's correct
-    const {SFXSource, playSFX, stopSFX} = this.props;
+    // As weird as it may sound, it's correct
+    const { SFXSource, playSFX, stopSFX } = this.props;
     return (
       <React.Fragment>
         <Sound
@@ -181,14 +171,14 @@ export class MainPage extends React.Component {
         )}
       </React.Fragment>
     );
-  }
+  };
 
   render() {
     const width = this.calcWidth();
     const height = this.calcHeight();
     const { soundEnabled } = this.props;
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
-    return ( 
+    return (
       <div ref={this.wrapperRef}>
         {soundEnabled && this.renderSound()}
         <Stage
@@ -198,11 +188,7 @@ export class MainPage extends React.Component {
             backgroundColor: 0xc0c048,
           }}
         >
-        <Game
-          {...this.props}
-          width={width}
-          height={height}
-        />
+          <Game {...this.props} width={width} height={height} />
         </Stage>
       </div>
     );

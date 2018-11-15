@@ -14,7 +14,16 @@ const calcY = (y, height) => (y / 72) * height;
 const withRelativeCoords = WrappedComponent => {
   class WithRelativeCoords extends React.Component {
     render() {
-      const { xPos, yPos, width, wide, tall, height, xOffset, yOffset } = this.props;
+      const {
+        xPos,
+        yPos,
+        width,
+        wide,
+        tall,
+        height,
+        xOffset,
+        yOffset,
+      } = this.props;
       return (
         <WrappedComponent
           {...this.props}

@@ -18,7 +18,7 @@ class GameLayout extends React.Component {
         <Header {...this.props} />
         <Reels {...this.props} />
         <Golem {...this.props} />
-        <BottomText {...this.props}/>
+        <BottomText {...this.props} />
       </React.Fragment>
     );
   }

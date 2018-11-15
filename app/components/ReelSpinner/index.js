@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import {Graphics, Container} from '@inlet/react-pixi';
+import { Graphics, Container } from '@inlet/react-pixi';
 import RelativeContainer from 'components/RelativeContainer';
 import RelativeRectangle from 'components/RelativeRectangle';
 import RelativeSprite from 'components/RelativeSprite';
@@ -14,7 +14,6 @@ import withRelativeCoords from 'components/withRelativeCoords';
 /* eslint-disable react/prefer-stateless-functio
 n */
 class ReelSpinner extends React.Component {
-
   state = {
     curIndex: 0,
     reelSpeed: 1.5,
@@ -33,7 +32,7 @@ class ReelSpinner extends React.Component {
 
   tick = delta => {
     const {
-      wide, 
+      wide,
       distribution,
       spinning,
       target,
@@ -41,7 +40,7 @@ class ReelSpinner extends React.Component {
       reelIndex,
       value: realValue,
     } = this.props;
-    const {reelSpeed, reelOffset, curIndex} = this.state;
+    const { reelSpeed, reelOffset, curIndex } = this.state;
     if (spinning || target !== realValue) {
       const increase = wide * 0.1 * delta * reelSpeed;
       if (reelOffset + increase > wide) {
@@ -56,14 +55,14 @@ class ReelSpinner extends React.Component {
           reelOffset: reelOffset + increase,
         });
       }
-    } else if (!spinning && target === realValue && reelOffset > 0){
+    } else if (!spinning && target === realValue && reelOffset > 0) {
       this.setState({
         reelOffset: 0,
       });
     }
-  }
+  };
 
-  getSymbolSprite = (index) => {
+  getSymbolSprite = index => {
     const { symbols, distribution } = this.props;
     let i = index;
     if (i >= distribution.size) {
@@ -72,7 +71,7 @@ class ReelSpinner extends React.Component {
       i += distribution.size;
     }
     return symbols.get(distribution.get(i)).get('icon');
-  }
+  };
 
   renderMask = (x, y, width, height) => {
     const rect = new PIXI.Graphics();
@@ -81,11 +80,11 @@ class ReelSpinner extends React.Component {
     rect.drawRect(x, y, width, height);
     rect.endFill();
     return rect;
-  }
+  };
 
   render() {
     const margin = 0.5;
-    const {curIndex, reelOffset} = this.state;
+    const { curIndex, reelOffset } = this.state;
     const {
       origWidth,
       origHeight,
@@ -96,14 +95,12 @@ class ReelSpinner extends React.Component {
       xPos,
       yPos,
       wide,
-      tall
+      tall,
     } = this.props;
 
     return (
       <React.Fragment>
-        <Container
-          {...this.props}
-        >
+        <Container {...this.props}>
           <RelativeSprite
             width={origWidth}
             height={origHeight}
@@ -145,15 +142,20 @@ class ReelSpinner extends React.Component {
             mask={this.masker.current}
             image={this.getSymbolSprite(curIndex + 1)}
           />
-          <Graphics x={0} y={0} ref={this.masker} draw={rect => {
-            rect.clear();
-            rect.beginFill(0x000000);
-            rect.drawRect(0, 0, width, height);
-            rect.endFill();
-          }} />
+          <Graphics
+            x={0}
+            y={0}
+            ref={this.masker}
+            draw={rect => {
+              rect.clear();
+              rect.beginFill(0x000000);
+              rect.drawRect(0, 0, width, height);
+              rect.endFill();
+            }}
+          />
         </Container>
       </React.Fragment>
-    )
+    );
   }
 }
 

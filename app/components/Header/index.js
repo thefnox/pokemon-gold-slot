@@ -74,7 +74,7 @@ class Header extends React.Component {
           xOffset={xOffset}
           yOffset={yOffset}
         />
-        
+
         <ScoreDisplay
           {...this.props}
           width={width}

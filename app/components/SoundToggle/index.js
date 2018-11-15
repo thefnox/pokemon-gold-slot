@@ -11,14 +11,16 @@ import RelativeSprite from 'components/RelativeSprite';
 class SoundToggle extends React.Component {
   render() {
     const { toggleMusic, soundEnabled } = this.props;
-    return <RelativeSprite
-      {...this.props}
-      image={ soundEnabled ? './soundon.png' : './soundoff.png' }
-      interactive
-      pointerdown={() => {
-        toggleMusic();
-      }}
-    />;
+    return (
+      <RelativeSprite
+        {...this.props}
+        image={soundEnabled ? './soundon.png' : './soundoff.png'}
+        interactive
+        pointerdown={() => {
+          toggleMusic();
+        }}
+      />
+    );
   }
 }
 

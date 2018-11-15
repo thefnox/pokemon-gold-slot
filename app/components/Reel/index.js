@@ -11,7 +11,6 @@ import ReelBackground from 'components/ReelBackground';
 import ReelSpinner from 'components/ReelSpinner';
 import withRelativeCoords from 'components/withRelativeCoords';
 
-
 /* eslint-disable react/prefer-stateless-function */
 class Reel extends React.Component {
   render() {
@@ -20,17 +19,17 @@ class Reel extends React.Component {
       <React.Fragment>
         <ReelBackground
           {...this.props}
-          wide={ wide / 4 }
-          tall={ tall }
-          xPos={ xPos }
-          yPos={ yPos }
+          wide={wide / 4}
+          tall={tall}
+          xPos={xPos}
+          yPos={yPos}
         />
         <ReelBackground
           {...this.props}
-          wide={ wide / 4 }
-          tall={ tall }
-          xPos={ xPos + wide * 0.75 }
-          yPos={ yPos }
+          wide={wide / 4}
+          tall={tall}
+          xPos={xPos + wide * 0.75}
+          yPos={yPos}
         />
         <RelativeRectangle
           {...this.props}
@@ -66,10 +65,10 @@ class Reel extends React.Component {
         />
         <ReelSpinner
           {...this.props}
-          wide={ wide / 2 }
-          tall={ tall - 1.5 }
-          xPos={ xPos + wide / 4 }
-          yPos={ yPos + 0.5 }
+          wide={wide / 2}
+          tall={tall - 1.5}
+          xPos={xPos + wide / 4}
+          yPos={yPos + 0.5}
         />
       </React.Fragment>
     );

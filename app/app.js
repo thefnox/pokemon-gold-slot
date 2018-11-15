@@ -50,7 +50,6 @@ import 'file-loader?name=.htaccess!./.htaccess';
 
 import configureStore from './configureStore';
 
-
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);

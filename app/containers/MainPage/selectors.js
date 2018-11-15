@@ -22,34 +22,54 @@ const makeSelectBet = () =>
   createSelector(selectMainPageDomain, substate => substate.get('bet'));
 
 const makeSelectReelOneSpinning = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelOneSpinning'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelOneSpinning'),
+  );
 
 const makeSelectReelTwoSpinning = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelTwoSpinning'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelTwoSpinning'),
+  );
 
 const makeSelectReelThreeSpinning = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelThreeSpinning'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelThreeSpinning'),
+  );
 
 const makeSelectReelOneTarget = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelOneTarget'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelOneTarget'),
+  );
 
 const makeSelectReelTwoTarget = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelTwoTarget'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelTwoTarget'),
+  );
 
 const makeSelectReelThreeTarget = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelThreeTarget'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelThreeTarget'),
+  );
 
 const makeSelectReelOneValue = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelOneValue'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelOneValue'),
+  );
 
 const makeSelectReelTwoValue = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelTwoValue'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelTwoValue'),
+  );
 
 const makeSelectReelThreeValue = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('reelThreeValue'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('reelThreeValue'),
+  );
 
 const makeSelectDistributions = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('distributions'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('distributions'),
+  );
 
 const makeSelectSymbols = () =>
   createSelector(selectMainPageDomain, substate => substate.get('symbols'));
@@ -76,11 +96,13 @@ const makeSelectYOffset = () =>
   createSelector(selectMainPageDomain, substate => substate.get('yOffset'));
 
 const makeSelectSoundEnabled = () =>
-  createSelector(selectMainPageDomain, substate => substate.get('soundEnabled'));
+  createSelector(selectMainPageDomain, substate =>
+    substate.get('soundEnabled'),
+  );
 
 const makeSelectPlayingSFX = () =>
   createSelector(selectMainPageDomain, substate => substate.get('playSFX'));
-  
+
 const makeSelectSFXSource = () =>
   createSelector(selectMainPageDomain, substate => substate.get('SFXSource'));
 

@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import RelativeText from 'components/RelativeText'
+import RelativeText from 'components/RelativeText';
 import withRelativeCoords from 'components/withRelativeCoords';
 import { Container } from '@inlet/react-pixi';
 import TextDisplayBackground from 'components/TextDisplayBackground';

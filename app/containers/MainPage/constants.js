@@ -3,7 +3,7 @@
  * MainPage constants
  *
  */
-const domain = 'app/MainPage/'
+const domain = 'app/MainPage/';
 export const DEFAULT_ACTION = `${domain}DEFAULT_ACTION`;
 export const PLAY_SFX = `${domain}PLAY_SFX`;
 export const INPUT_ACTION = `${domain}INPUT_ACTION`;

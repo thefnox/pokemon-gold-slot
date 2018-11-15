@@ -14,7 +14,7 @@ import TextDisplayBackground from 'components/TextDisplayBackground';
 /* eslint-disable react/prefer-stateless-function */
 class BetSelect extends React.Component {
   render() {
-    const { 
+    const {
       origWidth,
       origHeight,
       wide,

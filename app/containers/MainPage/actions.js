@@ -4,7 +4,7 @@
  *
  */
 
-import { 
+import {
   DEFAULT_ACTION,
   SET_PAYOUT,
   SET_CREDITS,
@@ -52,7 +52,7 @@ export function setWinning(win) {
   return {
     type: SET_WINNING,
     win,
-  }
+  };
 }
 
 export function setCredits(credits) {
@@ -144,7 +144,6 @@ export function setReelOneValue(value) {
   };
 }
 
-
 export function setReelOneTarget(value) {
   return {
     type: SET_REEL_ONE_TARGET,
@@ -192,11 +191,11 @@ export function setSFXPlaying(enabled, source = null) {
     type: PLAY_SFX,
     enabled,
     source,
-  }
+  };
 }
 
 export function toggleSound() {
   return {
     type: TOGGLE_SOUND,
-  }
+  };
 }

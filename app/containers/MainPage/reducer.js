@@ -5,7 +5,7 @@
  */
 
 import { fromJS, List } from 'immutable';
-import { 
+import {
   DEFAULT_ACTION,
   PLAY_SFX,
   SET_PAYOUT,
@@ -99,9 +99,7 @@ function mainPageReducer(state = initialState, action) {
     case SET_CREDITS:
       return state.set('credits', action.credits);
     case SET_WINNING:
-      return state
-        .set('win', action.win)
-        .set('earnings', action.winPayout);
+      return state.set('win', action.win).set('earnings', action.winPayout);
     case START_PLAYING:
       return state
         .set('playing', true)
