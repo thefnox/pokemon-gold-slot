@@ -23,11 +23,10 @@ import {
 import { getReelTarget, calcFinalValues, getReelAffinity } from 'utils/reelUtils';
 import { selectMainPageDomain } from './selectors';
 import { calcEarnings } from 'utils/reelUtils';
-import { play } from 'pixi-sound';
 
 function* determineWin() {
   yield* setReelTarget(3);
-  if (Math.random() * 100 <= 5) {
+  if (Math.random() * 100 <= 10) {
     yield* golemMode(3 + Math.random() * 4);
   }
   const main = yield select(selectMainPageDomain);

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import font from './fonts/PKMN.ttf';
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -7,12 +8,20 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  
+  @font-face {
+    font-family: 'PokemonGB';
+    src: url('./PKMN.ttf') format('truetype')
+    font-weight: normal;
+    font-style: normal;
+  }
+
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'PokemonGB', Helvetica, Arial, sans-serif;
   }
 
   body.fontLoaded {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'PokemonGB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {
@@ -29,13 +38,6 @@ const GlobalStyle = createGlobalStyle`
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
-  }
-
-  @font-face {
-    font-family: 'PokemonGB';
-    src: url('./PokemonGB.woff2') format('woff2')
-    font-weight: normal;
-    font-style: normal;
   }
 `;
 

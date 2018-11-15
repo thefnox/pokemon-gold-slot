@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Sound from 'react-sound';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -56,6 +56,11 @@ import saga from './saga';
 
 const Game = withPixiApp(GameLayout);
 
+const FontHotfix = styled.p`
+  color: white;
+  font-size: 24px;
+  font-family: 'PokemonGB';
+`;
 
 /* eslint-disable react/prefer-stateless-function */
 export class MainPage extends React.Component {
