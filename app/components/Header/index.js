@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import SoundToggle from 'components/SoundToggle';
 import ScoreDisplay from 'components/ScoreDisplay';
 import RelativeRectangle from 'components/RelativeRectangle';
 // import PropTypes from 'prop-types';
@@ -61,6 +62,7 @@ class Header extends React.Component {
           yOffset={yOffset}
         />
         <ScoreDisplay
+          {...this.props}
           width={width}
           height={height}
           xPos={20}
@@ -72,7 +74,9 @@ class Header extends React.Component {
           xOffset={xOffset}
           yOffset={yOffset}
         />
+        
         <ScoreDisplay
+          {...this.props}
           width={width}
           height={height}
           xPos={43.5}
@@ -81,6 +85,18 @@ class Header extends React.Component {
           tall={6}
           label="PAYOUT"
           value={payout}
+          xOffset={xOffset}
+          yOffset={yOffset}
+        />
+
+        <SoundToggle
+          {...this.props}
+          width={width}
+          height={height}
+          xPos={0}
+          yPos={0}
+          wide={8}
+          tall={8}
           xOffset={xOffset}
           yOffset={yOffset}
         />

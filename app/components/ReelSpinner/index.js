@@ -16,11 +16,10 @@ n */
 class ReelSpinner extends React.Component {
 
   state = {
-    spinning: true,
     curIndex: 0,
-    reelSpeed: 0.5,
+    reelSpeed: 1.5,
     reelOffset: 0,
-  }
+  };
 
   masker = React.createRef();
 
@@ -32,33 +31,47 @@ class ReelSpinner extends React.Component {
     this.props.app.ticker.remove(this.tick);
   }
 
-  tick = (delta) => {
-    const {wide, distribution} = this.props;
-    const {spinning, reelSpeed, reelOffset, curIndex} = this.state;
-    if (spinning) {
+  tick = delta => {
+    const {
+      wide, 
+      distribution,
+      spinning,
+      target,
+      updateValue,
+      reelIndex,
+      value: realValue,
+    } = this.props;
+    const {reelSpeed, reelOffset, curIndex} = this.state;
+    if (spinning || target !== realValue) {
       const increase = wide * 0.1 * delta * reelSpeed;
       if (reelOffset + increase > wide) {
+        const value = curIndex === 0 ? distribution.size - 1 : curIndex - 1;
+        updateValue(reelIndex, value);
         this.setState({
           reelOffset: 0,
-          curIndex: curIndex === 0 ? distribution.length - 1 : curIndex - 1,
+          curIndex: value,
         });
       } else {
         this.setState({
           reelOffset: reelOffset + increase,
         });
       }
+    } else if (!spinning && target === realValue && reelOffset > 0){
+      this.setState({
+        reelOffset: 0,
+      });
     }
   }
 
   getSymbolSprite = (index) => {
     const { symbols, distribution } = this.props;
     let i = index;
-    if (i >= distribution.length) {
-      i -= distribution.length;
+    if (i >= distribution.size) {
+      i -= distribution.size;
     } else if (i < 0) {
-      i += distribution.length;
+      i += distribution.size;
     }
-    return symbols[distribution[i]].icon;
+    return symbols.get(distribution.get(i)).get('icon');
   }
 
   renderMask = (x, y, width, height) => {

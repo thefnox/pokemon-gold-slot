@@ -69,7 +69,7 @@ class Reel extends React.Component {
           wide={ wide / 2 }
           tall={ tall - 1.5 }
           xPos={ xPos + wide / 4 }
-          yPos={ yPos }
+          yPos={ yPos + 0.5 }
         />
       </React.Fragment>
     );

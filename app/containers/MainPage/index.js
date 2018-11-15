@@ -6,16 +6,52 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Sound from 'react-sound';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Stage, withPixiApp } from '@inlet/react-pixi';
 import GameLayout from 'components/GameLayout';
-
+import {
+  inputAction,
+  setPayout,
+  setCredits,
+  startPlaying,
+  setReelValue,
+  setReelTarget,
+  toggleSound,
+  setBet,
+  stopReelOne,
+  stopReelTwo,
+  stopReelThree,
+  setSFXPlaying,
+} from 'containers/MainPage/actions';
 import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
-import makeSelectMainPage from './selectors';
-import reducer from './reducer';
+import {
+  makeSelectBet,
+  makeSelectReelOneValue,
+  makeSelectReelTwoValue,
+  makeSelectReelThreeValue,
+  makeSelectReelOneSpinning,
+  makeSelectReelTwoSpinning,
+  makeSelectReelThreeSpinning,
+  makeSelectReelOneTarget,
+  makeSelectReelTwoTarget,
+  makeSelectReelThreeTarget,
+  makeSelectXOffset,
+  makeSelectYOffset,
+  makeSelectDistributions,
+  makeSelectSymbols,
+  makeSelectCredits,
+  makeSelectPayout,
+  makeSelectIsPlaying,
+  makeSelectWin,
+  makeSelectGolemMode,
+  makeSelectSoundEnabled,
+  makeSelectPlayingSFX,
+  makeSelectSFXSource,
+  makeSelectEarnings,
+} from './selectors';
 import saga from './saga';
 
 const Game = withPixiApp(GameLayout);
@@ -26,72 +62,130 @@ export class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.wrapperRef = React.createRef();
+    this.handleClick = this.handleInput.bind(this);
   }
 
   state = {
-    xOffset: 0,
-    yOffset: 0,
-    credits: 100,
-    payout: 0,
-    bet: 1,
-    playing: false,
-    reelOneSpinning: true,
-    reelTwoSpinning: true,
-    reelThreeSpinning: true,
-    win: false,
-    symbols: [
-      {
-        icon: '/7.png',
-        payout: 300,
-      },
-      {
-        icon: '/pokeball.png',
-        payout: 50,
-      },
-      {
-        icon: '/staryu.png',
-        payout: 15,
-      },
-      {
-        icon: '/squirtle.png',
-        payout: 10,
-      },
-      {
-        icon: '/pikachu.png',
-        payout: 8,
-      },
-      {
-        icon: '/cherry.png',
-        payout: 6,
-      },
-    ],
-    distributions: [
-      [0, 5, 2, 4, 3, 0, 5, 2, 4, 3, 1, 5, 2, 4, 3],
-      [0, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2],
-      [0, 4, 5, 3, 2, 4, 5, 3, 2, 4, 1, 5, 3, 2, 4],
-    ],
+    width: null,
+    height: null,
   };
-
 
   calcWidth() {
     const node = this.wrapperRef.current;
+    let width = 0;
+    if (this.state.width) {
+      return this.state.width;
+    }
     if (node) {
       const dimensions = node.getBoundingClientRect();
-      return Math.min(dimensions.width, dimensions.height);
+      width = Math.min(dimensions.width, dimensions.height);
     }
-    return Math.min(window.innerHeight, window.innerWidth);
+    width = Math.min(window.innerHeight, window.innerWidth);
+    return width;
   }
 
   calcHeight() {
-    return this.calcWidth() * 0.9;
+    if (this.state.height) {
+      return this.state.height;
+    }
+    const height = this.calcWidth() * 0.9;
+    if (height > 0) {
+      this.setState({ height });
+    }
+    return height;
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleInput);
+    document.addEventListener('touchstart', this.handleTouch);
+    this.setState({
+      width: this.calcWidth(),
+      height: this.calcHeight(),
+    });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleInput);
+    document.removeEventListener('touchstart', this.handleTouch);
+  }
+
+  handleTouch = () => {
+    const {
+      beginPlaying,
+      setInput,
+      playing,
+    } = this.props;
+
+    if (!playing) {
+      beginPlaying();
+    } else {
+      setInput();
+    }
+  }
+
+  handleInput = (event) => {
+    const {
+      beginPlaying,
+      setInput,
+      playing,
+      bet,
+      updateBet,
+    } = this.props;
+
+    if (!playing) {
+      switch (event.key) {
+        case 'Down':
+        case 'ArrowDown':
+        case 'S':
+          updateBet(Math.max(bet - 1, 1));
+          event.preventDefault();
+          break;
+        case 'Up':
+        case 'ArrowUp':
+        case 'W':
+          updateBet(Math.min(bet + 1, 3));
+          event.preventDefault();
+          break;
+        default:
+          beginPlaying();
+          break;
+      }
+    } else {
+      setInput();
+    }
+  }
+
+  renderSound = () => {
+    //As weird as it may sound, it's correct
+    const {SFXSource, playSFX, stopSFX} = this.props;
+    return (
+      <React.Fragment>
+        <Sound
+          url="./music.mp3"
+          volume={50}
+          playStatus={Sound.status.PLAYING}
+          loop
+        />
+        {playSFX && (
+          <Sound
+            url={SFXSource}
+            volume={50}
+            playStatus={playSFX ? Sound.status.PLAYING : Sound.status.PAUSED}
+            onFinishedPlaying={() => stopSFX()}
+          />
+        )}
+      </React.Fragment>
+    );
   }
 
   render() {
     const width = this.calcWidth();
     const height = this.calcHeight();
+    const { soundEnabled } = this.props;
     PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
-    return (
+    return ( 
       <div ref={this.wrapperRef}>
+        {soundEnabled && this.renderSound()}
         <Stage
           width={width}
           height={height}
@@ -99,29 +193,57 @@ export class MainPage extends React.Component {
             backgroundColor: 0xc0c048,
           }}
         >
-          <Game
-            {...this.props}
-            width={width}
-            height={height}
-            {...this.state}
-          />
+        <Game
+          {...this.props}
+          width={width}
+          height={height}
+        />
         </Stage>
       </div>
     );
   }
 }
 
-MainPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
 const mapStateToProps = createStructuredSelector({
-  mainPage: makeSelectMainPage(),
+  bet: makeSelectBet(),
+  reelOneSpinning: makeSelectReelOneSpinning(),
+  reelTwoSpinning: makeSelectReelTwoSpinning(),
+  reelThreeSpinning: makeSelectReelThreeSpinning(),
+  reelOneTarget: makeSelectReelOneTarget(),
+  reelTwoTarget: makeSelectReelTwoTarget(),
+  reelThreeTarget: makeSelectReelThreeTarget(),
+  reelOneValue: makeSelectReelOneValue(),
+  reelTwoValue: makeSelectReelTwoValue(),
+  reelThreeValue: makeSelectReelThreeValue(),
+  golemMode: makeSelectGolemMode(),
+  distributions: makeSelectDistributions(),
+  xOffset: makeSelectXOffset(),
+  yOffset: makeSelectYOffset(),
+  symbols: makeSelectSymbols(),
+  credits: makeSelectCredits(),
+  payout: makeSelectPayout(),
+  soundEnabled: makeSelectSoundEnabled(),
+  playing: makeSelectIsPlaying(),
+  win: makeSelectWin(),
+  playSFX: makeSelectPlayingSFX(),
+  SFXSource: makeSelectSFXSource(),
+  earnings: makeSelectEarnings(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    updatePayout: amount => dispatch(setPayout(amount)),
+    updateCredits: amount => dispatch(setCredits(amount)),
+    updateBet: bet => dispatch(setBet(bet)),
+    updateValue: (reel, value) => dispatch(setReelValue(reel, value)),
+    updateTarget: (reel, value) => dispatch(setReelTarget(reel, value)),
+    toggleMusic: () => dispatch(toggleSound()),
+    beginPlaying: () => dispatch(startPlaying()),
+    hitReelOne: () => dispatch(stopReelOne()),
+    hitReelTwo: () => dispatch(stopReelTwo()),
+    hitReelThree: obj => dispatch(stopReelThree(obj)),
+    stopSFX: () => dispatch(setSFXPlaying(false)),
+    setInput: () => dispatch(inputAction()),
   };
 }
 
@@ -130,11 +252,8 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'mainPage', reducer });
 const withSaga = injectSaga({ key: 'mainPage', saga });
-
 export default compose(
-  withReducer,
   withSaga,
   withConnect,
 )(MainPage);

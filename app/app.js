@@ -7,7 +7,6 @@
 
 // Needed for redux-saga es6 generator support
 import '@babel/polyfill';
-
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -26,8 +25,12 @@ import '!file-loader?name=[name].[ext]!./images/2.png';
 import '!file-loader?name=[name].[ext]!./images/1.png';
 import '!file-loader?name=[name].[ext]!./images/cherry.png';
 import '!file-loader?name=[name].[ext]!./images/deco1.png';
+import '!file-loader?name=[name].[ext]!./images/soundon.png';
+import '!file-loader?name=[name].[ext]!./images/soundoff.png';
 import '!file-loader?name=[name].[ext]!./images/deco1on.png';
+import '!file-loader?name=[name].[ext]!./images/arrow.png';
 import '!file-loader?name=[name].[ext]!./images/deco2.png';
+import '!file-loader?name=[name].[ext]!./images/golem.png';
 import '!file-loader?name=[name].[ext]!./images/gloom.png';
 import '!file-loader?name=[name].[ext]!./images/pikachu.png';
 import '!file-loader?name=[name].[ext]!./images/pokeball.png';
@@ -35,6 +38,11 @@ import '!file-loader?name=[name].[ext]!./images/squirtle.png';
 import '!file-loader?name=[name].[ext]!./images/staryu.png';
 import '!file-loader?name=[name].[ext]!./fonts/PokemonGB.woff';
 import '!file-loader?name=[name].[ext]!./fonts/PokemonGB.woff2';
+import '!file-loader?name=[name].[ext]!./sound/music.mp3';
+import '!file-loader?name=[name].[ext]!./sound/golem.mp3';
+import '!file-loader?name=[name].[ext]!./sound/click.mp3';
+import '!file-loader?name=[name].[ext]!./sound/boop.mp3';
+import '!file-loader?name=[name].[ext]!./sound/start.mp3';
 import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
