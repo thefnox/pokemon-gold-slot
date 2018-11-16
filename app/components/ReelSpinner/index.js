@@ -39,6 +39,7 @@ class ReelSpinner extends React.Component {
       updateValue,
       reelIndex,
       value: realValue,
+      reelStopped,
     } = this.props;
     const { reelSpeed, reelOffset, curIndex } = this.state;
     if (spinning || target !== realValue) {
@@ -46,6 +47,9 @@ class ReelSpinner extends React.Component {
       if (reelOffset + increase > wide) {
         const value = curIndex === 0 ? distribution.size - 1 : curIndex - 1;
         updateValue(reelIndex, value);
+        if (value === target) {
+          reelStopped();
+        }
         this.setState({
           reelOffset: 0,
           curIndex: value,
@@ -59,6 +63,7 @@ class ReelSpinner extends React.Component {
       this.setState({
         reelOffset: 0,
       });
+      reelStopped();
     }
   };
 

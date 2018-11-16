@@ -14,12 +14,15 @@ import {
   SET_REEL_ONE_SPINNING,
   SET_REEL_ONE_VALUE,
   SET_REEL_ONE_TARGET,
+  SET_REEL_ONE_STOPPED,
   SET_REEL_TWO_SPINNING,
   SET_REEL_TWO_VALUE,
   SET_REEL_TWO_TARGET,
+  SET_REEL_TWO_STOPPED,
   SET_REEL_THREE_SPINNING,
   SET_REEL_THREE_VALUE,
   SET_REEL_THREE_TARGET,
+  SET_REEL_THREE_STOPPED,
   SET_GOLEM_MODE,
   SET_WINNING,
   STOP_PLAYING,
@@ -107,6 +110,24 @@ export function stopReelThree(obj) {
     type: SET_REEL_THREE_SPINNING,
     spinning: false,
     ...obj,
+  };
+}
+
+export function markReelOneAsStopped() {
+  return {
+    type: SET_REEL_ONE_STOPPED,
+  };
+}
+
+export function markReelTwoAsStopped() {
+  return {
+    type: SET_REEL_TWO_STOPPED,
+  };
+}
+
+export function markReelThreeAsStopped() {
+  return {
+    type: SET_REEL_THREE_STOPPED,
   };
 }
 

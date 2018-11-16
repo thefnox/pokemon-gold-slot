@@ -11,11 +11,11 @@ import BetSelect from 'components/BetSelect';
 /* eslint-disable react/prefer-stateless-function */
 class BottomText extends React.Component {
   renderText = () => {
-    const { playing, reelThreeSpinning, golemMode, win, earnings } = this.props;
+    const { playing, ended, win, earnings } = this.props;
     if (!playing) {
       return 'Bet how many\ncoins?';
     }
-    if (!reelThreeSpinning && !golemMode) {
+    if (ended) {
       if (win) {
         return `You won\n${earnings} coins!`;
       }

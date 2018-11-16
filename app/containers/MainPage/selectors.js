@@ -109,6 +109,9 @@ const makeSelectSFXSource = () =>
 const makeSelectEarnings = () =>
   createSelector(selectMainPageDomain, substate => substate.get('earnings'));
 
+const makeSelectEnded = () =>
+  createSelector(selectMainPageDomain, substate => substate.get('ended'));
+
 export default makeSelectMainPage;
 export {
   selectMainPageDomain,
@@ -136,4 +139,5 @@ export {
   makeSelectPlayingSFX,
   makeSelectSFXSource,
   makeSelectEarnings,
+  makeSelectEnded,
 };

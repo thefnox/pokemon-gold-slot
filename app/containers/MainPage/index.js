@@ -25,6 +25,9 @@ import {
   stopReelTwo,
   stopReelThree,
   setSFXPlaying,
+  markReelOneAsStopped,
+  markReelTwoAsStopped,
+  markReelThreeAsStopped,
 } from 'containers/MainPage/actions';
 import injectSaga from 'utils/injectSaga';
 import {
@@ -51,6 +54,7 @@ import {
   makeSelectPlayingSFX,
   makeSelectSFXSource,
   makeSelectEarnings,
+  makeSelectEnded,
 } from './selectors';
 import saga from './saga';
 
@@ -219,6 +223,7 @@ const mapStateToProps = createStructuredSelector({
   playSFX: makeSelectPlayingSFX(),
   SFXSource: makeSelectSFXSource(),
   earnings: makeSelectEarnings(),
+  ended: makeSelectEnded(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -235,6 +240,9 @@ function mapDispatchToProps(dispatch) {
     hitReelThree: obj => dispatch(stopReelThree(obj)),
     stopSFX: () => dispatch(setSFXPlaying(false)),
     setInput: () => dispatch(inputAction()),
+    reelOneHasStopped: () => dispatch(markReelOneAsStopped()),
+    reelTwoHasStopped: () => dispatch(markReelTwoAsStopped()),
+    reelThreeHasStopped: () => dispatch(markReelThreeAsStopped()),
   };
 }
 

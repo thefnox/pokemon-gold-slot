@@ -12,9 +12,13 @@ import {
   SET_CREDITS,
   SET_WINNING,
   SET_BET,
+  SET_ENDED,
   SET_REEL_ONE_SPINNING,
   SET_REEL_TWO_SPINNING,
   SET_REEL_THREE_SPINNING,
+  SET_REEL_ONE_STOPPED,
+  SET_REEL_TWO_STOPPED,
+  SET_REEL_THREE_STOPPED,
   SET_REEL_ONE_VALUE,
   SET_REEL_TWO_VALUE,
   SET_REEL_THREE_VALUE,
@@ -41,6 +45,7 @@ export const initialState = fromJS({
   playing: false,
   golemMode: false,
   soundEnabled: true,
+  ended: false,
   reelOneValue: 0,
   reelOneTarget: 0,
   reelOneSpinning: false,
@@ -103,6 +108,7 @@ function mainPageReducer(state = initialState, action) {
     case START_PLAYING:
       return state
         .set('playing', true)
+        .set('ended', false)
         .set('earnings', 0)
         .set('credits', state.get('credits') - state.get('bet'))
         .set('reelOneSpinning', true)
@@ -118,6 +124,12 @@ function mainPageReducer(state = initialState, action) {
       return state.set('reelTwoSpinning', action.spinning);
     case SET_REEL_THREE_SPINNING:
       return state.set('reelThreeSpinning', action.spinning);
+    case SET_REEL_ONE_STOPPED:
+      return state;
+    case SET_REEL_TWO_STOPPED:
+      return state;
+    case SET_REEL_THREE_STOPPED:
+      return state;
     case SET_REEL_ONE_VALUE:
       return state.set('reelOneValue', action.value);
     case SET_REEL_TWO_VALUE:
@@ -134,6 +146,8 @@ function mainPageReducer(state = initialState, action) {
       return state.set('golemMode', action.enabled);
     case SET_OFFSET_Y:
       return state.set('yOffset', action.offset);
+    case SET_ENDED:
+      return state.set('ended', true);
     case TOGGLE_SOUND:
       return state.set('soundEnabled', !state.get('soundEnabled'));
     default:

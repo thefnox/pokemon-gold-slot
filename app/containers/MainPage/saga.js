@@ -22,9 +22,13 @@ import {
   SET_REEL_ONE_TARGET,
   SET_REEL_TWO_TARGET,
   SET_REEL_THREE_TARGET,
+  SET_REEL_ONE_STOPPED,
+  SET_REEL_TWO_STOPPED,
+  SET_REEL_THREE_STOPPED,
   SET_GOLEM_MODE,
   SET_OFFSET_Y,
   SET_BET,
+  SET_ENDED,
   SET_REEL_TARGET,
   SET_PLAYING,
   SET_CREDITS,
@@ -37,7 +41,6 @@ import {
 import { selectMainPageDomain } from './selectors';
 
 function* determineWin() {
-  yield* setReelTarget(3);
   if (Math.random() * 100 <= 10) {
     yield* golemMode(3 + Math.random() * 4);
   }
@@ -56,6 +59,8 @@ function* determineWin() {
 
   const winnerSymbol = calcEarnings({ finalValues, symbols, bet });
   const earnings = winnerSymbol.get('payout');
+
+  yield put({ type: SET_ENDED });
   if (earnings === 0) {
     yield put({ type: SET_WINNING, win: false });
     yield call(delay, 1000);
@@ -117,7 +122,7 @@ function* setReelTarget(reel, increment = 0) {
       index = main.get('reelTwoValue');
       distribution = distributions.get(1);
       value = getReelTarget({
-        distribution: distributions.get(1),
+        distribution,
         index,
         increment:
           increment !== 0
@@ -132,7 +137,10 @@ function* setReelTarget(reel, increment = 0) {
       value = getReelTarget({
         distribution,
         index,
-        increment: increment !== 0 ? increment : 0,
+        increment:
+          increment !== 0
+            ? increment
+            : getReelAffinity({ distribution, index, symbols }),
       });
       yield put({ type: SET_REEL_THREE_TARGET, value });
       break;
@@ -148,7 +156,6 @@ function* autoStopReel(type) {
       yield call(delay, 100);
       i += 100;
     }
-    yield put({ type: PLAY_SFX, enabled: true, source: './boop.mp3' });
     yield put({ type, spinning: false });
   } finally {
     if (yield cancelled()) {
@@ -164,13 +171,10 @@ function* handleUserInput() {
         const main = yield select(selectMainPageDomain);
         if (main.get('reelOneSpinning')) {
           yield put({ type: SET_REEL_ONE_SPINNING, spinning: false });
-          yield put({ type: PLAY_SFX, enabled: true, source: './boop.mp3' });
         } else if (main.get('reelTwoSpinning')) {
           yield put({ type: SET_REEL_TWO_SPINNING, spinning: false });
-          yield put({ type: PLAY_SFX, enabled: true, source: './boop.mp3' });
         } else if (main.get('reelThreeSpinning')) {
           yield put({ type: SET_REEL_THREE_SPINNING, spinning: false });
-          yield put({ type: PLAY_SFX, enabled: true, source: './boop.mp3' });
         }
       }
     }
@@ -197,16 +201,24 @@ export default function* mainPageSaga() {
     yield take(SET_REEL_ONE_SPINNING);
     yield cancel(reelOneAutoSpin);
     yield* setReelTarget(1);
+    yield take(SET_REEL_ONE_STOPPED);
+    yield put({ type: PLAY_SFX, enabled: true, source: './boop.mp3' });
 
     const reelTwoAutoSpin = yield fork(autoStopReel, SET_REEL_TWO_SPINNING);
     yield take(SET_REEL_TWO_SPINNING);
     yield cancel(reelTwoAutoSpin);
     yield* setReelTarget(2);
+    yield take(SET_REEL_TWO_STOPPED);
+    yield put({ type: PLAY_SFX, enabled: true, source: './boop.mp3' });
 
     const reelThreeAutoSpin = yield fork(autoStopReel, SET_REEL_THREE_SPINNING);
     yield take(SET_REEL_THREE_SPINNING);
     yield cancel(reelThreeAutoSpin);
     yield cancel(userInput);
-    yield* determineWin();
+    yield* setReelTarget(3);
+    yield take(SET_REEL_THREE_STOPPED);
+    yield put({ type: PLAY_SFX, enabled: true, source: './boop.mp3' });
+
+    yield fork(determineWin);
   }
 }

@@ -16,12 +16,15 @@ class Reels extends React.Component {
       reelOneValue,
       reelOneTarget,
       reelOneSpinning,
+      reelOneHasStopped,
       reelTwoValue,
       reelTwoTarget,
       reelTwoSpinning,
+      reelTwoHasStopped,
       reelThreeValue,
       reelThreeTarget,
       reelThreeSpinning,
+      reelThreeHasStopped,
     } = this.props;
     // Decorations come first
     return (
@@ -35,6 +38,7 @@ class Reels extends React.Component {
           yPos={14.5}
           distribution={distributions.get(0)}
           value={reelOneValue}
+          reelStopped={reelOneHasStopped}
           spinning={reelOneSpinning}
           target={reelOneTarget}
           reelIndex={0}
@@ -47,6 +51,7 @@ class Reels extends React.Component {
           yPos={14.5}
           distribution={distributions.get(1)}
           value={reelTwoValue}
+          reelStopped={reelTwoHasStopped}
           spinning={reelTwoSpinning}
           target={reelTwoTarget}
           reelIndex={1}
@@ -59,6 +64,7 @@ class Reels extends React.Component {
           yPos={14.5}
           distribution={distributions.get(2)}
           value={reelThreeValue}
+          reelStopped={reelThreeHasStopped}
           spinning={reelThreeSpinning}
           target={reelThreeTarget}
           reelIndex={2}
